@@ -10,13 +10,13 @@ import requests
 from openai import OpenAI
 from dotenv import load_dotenv
 import streamlit.components.v1 as components
+from dotenv import load_dotenv
 
-# Optional: use a .env for your API key!
-load_dotenv()
-OPENAI_API_KEY = os.environ.get("OPENAI_API_KEY",
-                                "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")
-os.environ["OPENAI_API_KEY"] = OPENAI_API_KEY
-client = OpenAI()
+load_dotenv() # For local development
+OPENAI_API_KEY = os.environ.get("OPENAI_API_KEY")
+if not OPENAI_API_KEY:
+    raise ValueError("OPENAI_API_KEY environment variable not set.")
+client = OpenAI(api_key=OPENAI_API_KEY)
 
 # -------- A2A IMPORTS --------
 from python_a2a import AgentNetwork, A2AServer, agent
