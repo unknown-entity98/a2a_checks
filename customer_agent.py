@@ -6,12 +6,17 @@ from langchain_groq import ChatGroq
 from langchain_core.messages import HumanMessage, SystemMessage
 from python_a2a import A2AServer, skill, agent, run_server, TaskStatus, TaskState
 import os
+from dotenv import load_dotenv
 
+load_dotenv()
 # Initialize Groq client
+GROQ_API_KEY = os.environ.get("GROQ_API_KEY")
+if not GROQ_API_KEY:
+    raise ValueError("GROQ_API_KEY environment variable not set.")
 client = ChatGroq(
-    groq_api_key=os.environ.get("GROQ_API_KEY", "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"),
+    groq_api_key=GROQ_API_KEY,
     model_name="llama3-70b-8192"
-)
+
 
 # Database configuration
 #DATABASE_URL = "postgresql://postgres.dwqkvqjtbvylqgomrhre:QYWX1GwjAgWJ2PBz@aws-0-us-east-2.pooler.supabase.com:5432/postgres"
