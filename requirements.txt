@@ -1,0 +1,10 @@
+psycopg2-binary
+openai
+python-a2a
+streamlit
+pandas
+Pillow
+requests
+python-dotenv
+langchain-groq
+langchain-core
