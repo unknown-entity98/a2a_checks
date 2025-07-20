@@ -5,12 +5,13 @@ from datetime import datetime
 import os
 from openai import OpenAI
 from python_a2a import A2AServer, skill, agent, run_server, TaskStatus, TaskState
+from dotenv import load_dotenv
 
-# Set OpenAI API key
-os.environ[
-    "OPENAI_API_KEY"] = "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"
-
-client = OpenAI()
+load_dotenv() # For local development
+OPENAI_API_KEY = os.environ.get("OPENAI_API_KEY")
+if not OPENAI_API_KEY:
+    raise ValueError("OPENAI_API_KEY environment variable not set.")
+client = OpenAI(api_key=OPENAI_API_KEY)
 
 # Database configuration
 #DATABASE_URL = "postgresql://postgres.dwqkvqjtbvylqgomrhre:QYWX1GwjAgWJ2PBz@aws-0-us-east-2.pooler.supabase.com:5432/postgres"
