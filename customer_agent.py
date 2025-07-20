@@ -15,7 +15,7 @@ if not GROQ_API_KEY:
     raise ValueError("GROQ_API_KEY environment variable not set.")
 client = ChatGroq(
     groq_api_key=GROQ_API_KEY,
-    model_name="llama3-70b-8192"
+    model_name="llama3-70b-8192")
 
 
 # Database configuration
